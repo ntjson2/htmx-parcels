@@ -4,70 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <!-- <script defer src="/__/firebase/10.11.0/firebase-app-compat.js"></script> -->
-    <!-- include only the Firebase features as you need -->
-   <!--  <script defer src="/__/firebase/10.11.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-performance-compat.js"></script> -->
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-  <!--   <script defer src="/__/firebase/init.js?useEmulator=true"></script> -->
-
     <script src="https://unpkg.com/htmx.org@1.9.11/dist/htmx.js" integrity="sha384-l9bYT9SL4CAW0Hl7pAOpfRc18mys1b0wK4U8UtGnWOxPVbVMgrOdB+jyz/WY8Jue" crossorigin="anonymous"></script>
-
     <script src=https://cdn.tailwindcss.com></script>
-    
   </head>
-  <body>
+  </head>
+  <body hx-get="http://localhost:5000/htmx-lab1/us-central1/home" hx-target="#main" hx-trigger="load"></body>
+    <div class="bg-white w-2/5 float-end">
 
-    <div class="border-blue-600 border-2 w-96 mx-auto my-5 content-center">
-      <form hx-get="http://localhost:5000/htmx-lab1/us-central1/test" hx-target="#userList" hx-swap="beforebegin">
-      
-        <div>
-          <label for="name">Name:</label>
-          <input type="text"  name="name" value="">
-        </div>
-        <div>
-          <label for="major">Major:</label>
-          <input type="text"  name="major" value="">
-        </div>
-        <div>
-          <label for="quote">Quote:</label>
-          <input type="text"  name="quote" value="">
-        </div>
-        
-          <button >Submit</button>
-        </form> 
-    </div>
-    <div class="users">
-      <br id="userList">
+      <div class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+        <a hx-get="http://localhost:5000/htmx-lab1/us-central1/home" hx-target="#main" class="text-sm font-semibold leading-6 text-gray-900">Home!!</a>
+        <a hx-get="http://localhost:5000/htmx-lab1/us-central1/about" hx-target="#main" class="text-sm font-semibold leading-6 text-gray-900">About</a>
+        <a hx-get="http://localhost:5000/htmx-lab1/us-central1/contact" hx-target="#main" class="text-sm font-semibold leading-6 text-gray-900">Contact</a>
+        <a hx-get="http://localhost:5000/htmx-lab1/us-central1/side" hx-target="#main" class="text-sm font-semibold leading-6 text-gray-900">Side</a>
+      </div>
     </div>
 
-  <!--   <script>
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      var firebaseConfig = {
-        apiKey: "AIzaSyD1J9Q9J9J9J9J9J9J9J9J9J9J9J9J9J9",
-        authDomain: "my-firebase-project.firebaseapp.com",
-        projectId: "my-firebase-project",
-        storageBucket: "my-firebase-project.appspot.com",
-        messagingSenderId: "1234567890",
-        appId: "1:1234567890:web:1234567890abcdef",
-        measurementId: "G-1234567890"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-    </script> -->
+    <div class="pt-20" id="main">
+    </div>
     
   </body>
 </html>

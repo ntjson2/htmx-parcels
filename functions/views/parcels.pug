@@ -1,0 +1,14 @@
+h1 still alive
+block content
+    h1 Parcels
+   
+each parcel, index in fParcels
+    img(id=`image${index}` src=`images/holder.jpg`)    
+    a(
+        hx-get=`http://localhost:5000/htmx-lab1/us-central1/imageRef/${index}`
+        hx-target=`#image${index}`    
+        hx-swap="outerHTML"
+        class="text-sm font-semibold leading-6 text-gray-900"
+    ) Update Image #{index}
+
+    

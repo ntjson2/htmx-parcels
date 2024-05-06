@@ -1,0 +1,28 @@
+git push --set-upstream nj-readme-updates nj-readme-updates
+
+
+Updated README with new project tracking and documentation"
+
+
+git push --set-upstream origin nj-ir-tuning2
+
+git checkout -b nj-runtimeFix1 dev
+git push --set-upstream origin nj-runtimeFix1
+
+
+
+
+// Correct the movement of the robot if the IR sensors are blocked
+void CorrectMovementFromIRsensor(){
+
+
+git checkout -b nj-documentation development
+git push --set-upstream origin nj-documentation
+
+
+git remote set-url origin https://github.com/ntjson2/htmx-parcels.git
+
+git checkout -b nj-x1 main
+
+git pull origin nj-x1 --allow-unrelated-histories
+git push --set-upstream origin nj-x1

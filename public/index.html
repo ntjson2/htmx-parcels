@@ -3,25 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <title>Welcome to Firebase Hosting with API tests</title>
     <script src="https://unpkg.com/htmx.org@1.9.11/dist/htmx.js" integrity="sha384-l9bYT9SL4CAW0Hl7pAOpfRc18mys1b0wK4U8UtGnWOxPVbVMgrOdB+jyz/WY8Jue" crossorigin="anonymous"></script>
     <script src=https://cdn.tailwindcss.com></script>
   </head>
-  </head>
-  <body hx-get="http://localhost:5000/htmx-lab1/us-central1/home" hx-target="#main" hx-trigger="load"></body>
-    <div class="bg-white w-2/5 float-end">
 
-      <div class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
-        <a hx-get="http://localhost:5000/htmx-lab1/us-central1/home" hx-target="#main" class="text-sm font-semibold leading-6 text-gray-900">Home!!</a>
-        <a hx-get="http://localhost:5000/htmx-lab1/us-central1/about" hx-target="#main" class="text-sm font-semibold leading-6 text-gray-900">About</a>
-        <a hx-get="http://localhost:5000/htmx-lab1/us-central1/contact" hx-target="#main" class="text-sm font-semibold leading-6 text-gray-900">Contact</a>
-        <a hx-get="http://localhost:5000/htmx-lab1/us-central1/side" hx-target="#main" class="text-sm font-semibold leading-6 text-gray-900">Side</a>
-        <a hx-get="http://localhost:5000/htmx-lab1/us-central1/parcels" hx-target="#main" class="text-sm font-semibold leading-6 text-gray-900">Parcels</a>
-      </div>
+  <body hx-get="https://home-dcjiio5rlq-uc.a.run.app" hx-target="#main" hx-trigger="load">
+    <header class="bg-gray-800 py-4">  
+      <nav class="container mx-auto flex items-center justify-between px-4">
+        <div class="w-2/5 float-end">
+          <div class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+            <a hx-get="https://home-dcjiio5rlq-uc.a.run.app" hx-target="#main" class="text-med font-semibold leading-6 text-white">Home</a>
+            <a hx-get="https://contact-dcjiio5rlq-uc.a.run.app" hx-target="#main" class="text-sm font-semibold leading-6 text-white">Contact</a>
+            <a hx-get="http://127.0.0.1:5001/htmx-lab1/us-central1/parcels" hx-target="#main" class="text-sm font-semibold leading-6 text-white">Parcels</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div id="main">
     </div>
-
-    <div class="pt-20" id="main">
-    </div>
-    
   </body>
 </html>

@@ -2,16 +2,15 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const admin = require("firebase-admin");
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCPNjyq9AqRaLIgBIUHHRjrhFWV8mzDVw8",
-    authDomain: "njflutter-01.firebaseapp.com",
-    projectId: "njflutter-01",
-    storageBucket: "njflutter-01.appspot.com",
-    messagingSenderId: "1008004124285",
-    appId: "1:1008004124285:web:8d44bc72804cd4c0e92b14",
-    measurementId: "G-WJL5557660"
-  };
+  apiKey: "AIzaSyB9nxXuMDVINJD9Bo7hOKaTJq0nZ9IQXaU",
+  authDomain: "htmx-lab1.firebaseapp.com",
+  projectId: "htmx-lab1",
+  storageBucket: "htmx-lab1.appspot.com",
+  messagingSenderId: "328178180910",
+  appId: "1:328178180910:web:31ef7c51a367a11e9a90bf"
+};
 
-/*   admin.initializeApp(firebaseConfig);
-  const db = admin.firestore();  */ 
+
   module.exports = { firebaseConfig };  

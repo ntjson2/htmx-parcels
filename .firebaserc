@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "htmx-lab1"
-  }
+    "default": "htmx-lab1",
+    "htmx": "htmx-lab1"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

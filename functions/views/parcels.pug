@@ -1,14 +1,20 @@
-h1 still alive
-block content
-    h1 Parcels
-   
-each parcel, index in fParcels
-    img(id=`image${index}` src=`images/holder.jpg`)    
-    a(
-        hx-get=`http://localhost:5000/htmx-lab1/us-central1/imageRef/${index}`
-        hx-target=`#image${index}`    
-        hx-swap="outerHTML"
-        class="text-sm font-semibold leading-6 text-gray-900"
-    ) Update Image #{index}
+div.flex.content-start.p-8.m-8
+    div.grow
+        h2.mb-4.text-2xl.font-extrabold.leading-none.tracking-tight.text-gray-900 Parcel access 
+    div.grow
+        p This is a list of parcels, click on any below, wait (sometimes for a while) and see the image change.
+        p This is a demonstration of how to use htmx to update an image on the page.
+            | The image is fetched from a cloud function that returns a URL to an image from base64 data.
 
+   
+div.grid.grid-cols-4.grid-rows-4.m-9.content-center
+    each parcel, index in fParcels
+        div
+            img(id=`image${index}` src=`images/holder.jpg`)    
+            a(
+                hx-get=`https://parcels-dcjiio5rlq-uc.a.run.app/${index}`
+                hx-target=`#image${index}`    
+                hx-swap="outerHTML"
+                class="text-sm font-semibold leading-6 text-gray-900"
+            ) Update Image #{index}
     

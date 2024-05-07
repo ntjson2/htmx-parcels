@@ -1,4 +1,3 @@
-
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -6,11 +5,19 @@ const logger = require("firebase-functions/logger");
 
 const { onRequest } = require("firebase-functions/v2/https");
 // Firebase Admin SDK
-admin.initializeApp(firebaseConfig.firebaseConfig);
+const fbc = require("./firebaseConfig");
+const admin = require("firebase-admin");
+admin.initializeApp(fbc.firebaseConfig);
 const db = admin.firestore();
+
 const parcelDataSet = db.collection('htmlparcels').doc('parcels');
+
 // Email API client
+const { CourierClient } = require("@trycourier/courier");
 const courier = new CourierClient({ authorizationToken: process.env.COURIER_API_KEY });
+
+// Pug template engine
+const pug = require('pug');
 
 exports.home = onRequest({ cors: true }, (request, response) => {
     let template = pug.compileFile('views/home.pug');
@@ -73,8 +80,8 @@ exports.imageRef = onRequest({ cors: true }, (request, response) => {
         console.log('Request received for request.params[0]: ', request.params['0']);
         imageKey = request.params['0'];
 
-        const parcelData = db.collection('njflutter').doc('parcels');
-        parcelData.get().then((doc) => {
+        
+        parcelDataSet.get().then((doc) => {
             if (doc.exists) {
                 console.log("Getting images Document! ");
                 filtered = doc.data();
@@ -89,9 +96,9 @@ exports.imageRef = onRequest({ cors: true }, (request, response) => {
                     secretImageName = filtered[imageKey] + '.jpg';
                 }
             } else {
+                logger.error("No such img!");
                 console.log("No such img!");
                 secretImageName = '1.jpg';
-                logger.error("No such img!");
             }
 
             const imageName = path.basename(secretImageName);
@@ -123,14 +130,17 @@ exports.contact = onRequest({ cors: true }, (request, response) => {
     response.end(markup);
 });
 
-
 exports.parcels = onRequest({ cors: true }, (request, response) => {
     let template = pug.compileFile('views/parcels.pug');
     var filtered;
+    logger.info("Getting parcels doc... ",parcelDataSet);
+    console.log("Getting parcels doc... ", parcelDataSet);
 
     parcelDataSet.get().then((doc) => {
+
         if (doc.exists) {
-            console.log("Getting Document! ");
+
+            console.log("Found doc Document! ");
             filtered = doc.data();
             console.log('filtered 1:', filtered);
 
@@ -147,11 +157,21 @@ exports.parcels = onRequest({ cors: true }, (request, response) => {
         } else {
             logger.error("No such Document!");
             console.log("No such Document!");
-            response.send("No such Document, check the logs");
+            response.writeHead(404, {
+                'Content-Type': 'text/html',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'PUT, POST, OPTIONS'
+            });
+            response.end("No such Document, check the logs");
         }
     }).catch((error) => {
         logger.error("Error getting document:", error);
         console.log("Error getting document:", error);
-        response.send("Error getting document, check the logs: ", error);
+        response.writeHead(500, {
+            'Content-Type': 'text/html',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'PUT, POST, OPTIONS'
+        });
+        response.end("Error getting document, check the logs: " + error);
     });
 });
